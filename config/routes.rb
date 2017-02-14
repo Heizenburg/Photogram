@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
 
- root 'posts#index'  
+ root 'posts#index' 
+  get 'notifications/:id/link_through', to: 'notifications#link_through',
+                                        as: :link_through
+  get 'notifications', to: 'notifications#index'
+ 
  resources :posts do  
-    resources :comments
+ resources :comments
     member do
         get 'like'
+        get 'unlike'
     end
  end 
 

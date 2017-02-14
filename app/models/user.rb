@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   validates :user_name, presence: true, length: { minimum: 6, maximum: 16 }  
+  has_many :notifications, dependent: :destroy  
   has_many :posts, dependent: :destroy  
   has_many :comments, dependent: :destroy
 
